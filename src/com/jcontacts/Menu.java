@@ -10,7 +10,7 @@ class Menu {
     private ContactsList contactsList = new ContactsList();
 
     void showMenu() throws IOException {
-        while(true) {
+        menuLoop : while(true) {
 
             System.out.println("###############################################");
 
@@ -23,25 +23,22 @@ class Menu {
 
             String selection = keyboard.nextLine();
 
-            if (selection.equals("3")){
-                System.out.println("Please come again.");
-                break;
-            }
+            switch (selection) {
+                case "1":
+                    addContact();
+                    break;
 
-            if (!selection.equals("1") && !selection.equals("2")) {
-                System.out.println("\nInvalid selection, try again.");
-                System.out.println("\nPress ENTER to continue.");
-                System.in.read();
+                case "2":
+                    displayContacts();
+                    break;
 
-                continue;
-            }
+                case "3":
+                    quitMenu();
+                    break menuLoop;
 
-            if (selection.equals("1")) {
-                addContact();
-            }
-
-            if (selection.equals("2")) {
-                displayContacts();
+                default:
+                    invalidSelction();
+                    continue menuLoop;
             }
         }
     }
@@ -68,6 +65,16 @@ class Menu {
         System.out.println("\nDisplaying contacts:");
         this.contactsList.displayContacts();
 
+        System.out.println("\nPress ENTER to continue.");
+        System.in.read();
+    }
+
+    private void quitMenu() {
+        System.out.println("Please come again.");
+    }
+
+    private void invalidSelction() throws IOException {
+        System.out.println("\nInvalid selection, try again.");
         System.out.println("\nPress ENTER to continue.");
         System.in.read();
     }
