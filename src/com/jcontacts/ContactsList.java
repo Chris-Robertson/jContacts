@@ -6,9 +6,8 @@ class ContactsList {
     private ArrayList<Contact> contactsList = new ArrayList<>();
 
     void displayContacts() {
-        for (Contact contact:contactsList) {
-            System.out.println(contact.getName() + " : " + contact.getPhoneNumber());
-        }
+        contactsList.forEach(contact ->
+            System.out.println(contact.getName() + " : " + contact.getPhoneNumber()));
     }
 
     void addContact(String name, String phoneNumber) {
