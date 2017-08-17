@@ -12,9 +12,17 @@ class Menu {
     void showMenu() throws IOException {
         menuLoop : while(true) {
 
+            // List of menuItems
+            // menuItems.add("1", "Add Contact", () -> addContact();
+            // etc
+
+            // menuItems.forEach(item -> print item.index item.description
+
+
+
             System.out.println("###############################################");
 
-            System.out.println("Menu");
+            System.out.println("Menu\n");
             System.out.println("1. Add Contact");
             System.out.println("2. Display Contacts");
             System.out.println("3. Quit");
