@@ -1,6 +1,7 @@
 package com.jcontacts;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Menu {
@@ -12,42 +13,20 @@ class Menu {
     void showMenu() throws IOException {
         menuLoop : while(true) {
 
-            // List of menuItems
-            // menuItems.add("1", "Add Contact", () -> addContact();
-            // etc
+            ArrayList<MenuItem> menuItems = new ArrayList<>();
 
-            // menuItems.forEach(item -> print item.index item.description
+            menuItems.add("1", "Add Contact", () -> addContact());
+            menuItems.add("2", "Display Contacts", () -> displayContacts());
+            menuItems.add("3", "Quit", () -> quitMenu());
 
-
-
-            System.out.println("###############################################");
-
-            System.out.println("Menu\n");
-            System.out.println("1. Add Contact");
-            System.out.println("2. Display Contacts");
-            System.out.println("3. Quit");
-            System.out.printf("\nPlease select an option: ");
-
+            menuItems.forEach(item -> System.out.println(item.getIndex() + ". " + item.getDescription());
 
             String selection = keyboard.nextLine();
 
-            switch (selection) {
-                case "1":
-                    addContact();
-                    break;
-
-                case "2":
-                    displayContacts();
-                    break;
-
-                case "3":
-                    quitMenu();
-                    break menuLoop;
-
-                default:
-                    invalidSelction();
-                    continue menuLoop;
+            if (menuItems.contains(selection)) {
+                menuItems.get(Integer.parseInt(selection)).getRunMethod();
             }
+            else invalidSelction();
         }
     }
 
